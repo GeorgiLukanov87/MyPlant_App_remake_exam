@@ -13,15 +13,15 @@
 <div id="box">
     <header>
         <!-- Navigation Bar -->
-        <h1><a class="index-navigation" href="#">MyPlants</a></h1>
+        <h1><a class="index-navigation" href="{% url 'index' %}">MyPlants</a></h1>
         <nav>
             <!-- if the user has not created a profile -->
-            <a href="#">Create Profile</a>
+            <a href="{% url 'create-profile' %}">Create Profile</a>
 
             <!-- if the user has created a profile -->
-            <a href="#">Catalogue</a>
-            <a href="#">Create Plant</a>
-            <a href="#">Profile</a>
+            <a href="{% url 'catalogue' %}">Catalogue</a>
+            <a href="{% url 'create-plant' %}">Create Plant</a>
+            <a href="{% url 'details-profile' %}">Profile</a>
         </nav>
     </header>
 
