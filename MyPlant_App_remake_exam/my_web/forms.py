@@ -19,10 +19,23 @@ class ProfileCreateForm(ProfileBaseForm):
     class Meta:
         model = Profile
         fields = ('username', 'first_name', 'last_name',)
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+
+        }
 
 
 class ProfileEditForm(ProfileBaseForm):
-    pass
+    class Meta:
+        model = Profile
+        fields = ('username', 'first_name', 'last_name', 'profile_picture',)
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'profile_picture': 'Profile Picture',
+
+        }
 
 
 class ProfileDeleteForm(ProfileBaseForm):
@@ -53,7 +66,7 @@ class PlantEditForm(PlantBaseForm):
     pass
 
 
-class CarDeleteForm(PlantBaseForm):
+class PlantDeleteForm(PlantBaseForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.__disable_fields()

@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <!-- Display paragraph: If there are no plants yet-->
-    <p class="no-articles">No plants yet</p>
-    <!-- Display div "plant" with information about every plant (if any)-->
+    {% if not plants %}
+        <p class="no-articles">No plants yet</p>
+    {% endif %}
+
     <section id="catalogue">
-        <!-- first plant-->
-        <div class="plant-card">
-            <div class="image-wrap">
-                <!-- plant image -->
-                <img src="http://cdn.shopify.com/s/files/1/0047/9730/0847/products/nurserylive-plants-rubber-tree-rubber-plant-ficus-elastica-small-plant-16969285337228.jpg?v=1634227743"
-                     alt="Indoor Plants">
+        {% for plant in plants %}
+
+            <div class="plant-card">
+                <div class="image-wrap">
+                    <img src="{{ plant.image_url }}"
+                         alt="{{ plant.plant_type }}">
+                </div>
+                <h3>{{ plant.name }}</h3>
+                <h1>{{ plant.description }}</h1>
+                <div class="details-buttons">
+                    <a href="{% url 'details-plant' pk=plant.pk %}" class="details-btn">Details</a>
+                </div>
             </div>
-            <!-- plant name -->
-            <h3>RubberPlant</h3>
-            <!-- plant description -->
-            <h1>A rubber tree plant...</h1>
-            <div class="details-buttons">
-                <!-- plant details button -->
-                <a href="#" class="details-btn">Details</a>
-            </div>
-        </div>
+
+        {% endfor %}
     </section>
 
 {% endblock %}

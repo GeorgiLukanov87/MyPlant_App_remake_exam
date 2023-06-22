@@ -1,30 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-    <!-- details section -->
     <section id="plant-details">
         <h1>Plant Details</h1>
         <div class="info-section">
             <div class="plant-header">
-                <!-- plant image -->
                 <img class="plant-img"
-                     src="https://www.ikea.com/om/en/images/products/fejka-artificial-potted-plant-orchid-white__0748880_pe745269_s5.jpg?f=s"
+                     src="{{ plant.image_url }}"
                      alt='plant image'/>
-                <!-- plant type -->
-                <h1>Indoor Plants</h1>
-                <!-- plant name -->
-                <p><span class="description-plant">Name: Orchid</span></p>
-                <!-- plant price -->
-                <p><span class="description-plant">Price: 10.00</span></p>
-                <!-- plant description -->
-                <p><span class="description-plant">Description: Orchids are plants that belong to the family Orchidaceae, a diverse and widespread group of flowering plants with blooms that are often colourful and fragrant.</span></p>
+                <h1>{{ plant.plant_type }}</h1>
+                <p><span class="description-plant">Name: {{ plant.name }}</span></p>
+                <p><span class="description-plant">Price: {{ plant.price|floatformat:2 }}</span></p>
+                <p><span class="description-plant">Description: {{ plant.description }}</span></p>
             </div>
 
-            <!-- Edit/Delete buttons -->
             <div class="buttons">
-                <a href="#" class="edit-button">Edit</a>
-                <a href="#" class="delete-button">Delete</a>
+                <a href="{% url 'edit-plant' pk=plant.pk %}" class="edit-button">Edit</a>
+                <a href="{% url 'delete-plant' pk=plant.pk %}" class="delete-button">Delete</a>
             </div>
         </div>
     </section>
