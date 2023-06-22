@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from MyPlant_App_remake_exam.my_web.models import Profile, Plant
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Plant)
+class PlantAdmin(admin.ModelAdmin):
+    pass
