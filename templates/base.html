@@ -12,16 +12,15 @@
 <body>
 <div id="box">
     <header>
-        <!-- Navigation Bar -->
         <h1><a class="index-navigation" href="{% url 'index' %}">MyPlants</a></h1>
         <nav>
-            <!-- if the user has not created a profile -->
-            <a href="{% url 'create-profile' %}">Create Profile</a>
-
-            <!-- if the user has created a profile -->
-            <a href="{% url 'catalogue' %}">Catalogue</a>
-            <a href="{% url 'create-plant' %}">Create Plant</a>
-            <a href="{% url 'details-profile' %}">Profile</a>
+            {% if not profile %}
+                <a href="{% url 'create-profile' %}">Create Profile</a>
+            {% else %}
+                <a href="{% url 'catalogue' %}">Catalogue</a>
+                <a href="{% url 'create-plant' %}">Create Plant</a>
+                <a href="{% url 'details-profile' %}">Profile</a>
+            {% endif %}
         </nav>
     </header>
 
